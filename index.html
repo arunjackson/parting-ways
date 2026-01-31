@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Update | BrightChamps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --dark-gray: #343a40;
+            --gradient: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
+            --gradient-accent: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.7;
+            color: var(--primary);
+            background-color: #fefefe;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f9 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 40px;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0V100H1000V0C900,70 800,90 700,90C600,90 500,70 400,70C300,70 200,90 100,90C50,90 0,70 0,0Z" fill="rgba(255,255,255,0.1)"/></svg>') bottom center no-repeat;
+            background-size: 100% auto;
+        }
+        
+        .header-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .meta-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 10px 22px;
+            color: white;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .badge:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+        
+        /* Letter */
+        .letter-container {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient);
+        }
+        
+        .letter-body {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        
+        .paragraph {
+            margin-bottom: 28px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .paragraph::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.5s ease;
+        }
+        
+        .paragraph.visible::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .greeting {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(58, 12, 163, 0.1) 0%, rgba(247, 37, 133, 0.1) 100%);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .closing {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .signature {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 10px;
+            letter-spacing: -1px;
+        }
+        
+        /* Button */
+        .video-section {
+            text-align: center;
+            padding: 40px 0 80px;
+            position: relative;
+        }
+        
+        .video-button {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 15px 35px rgba(247, 37, 133, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .video-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #b5179e 0%, #7209b7 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-button:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(247, 37, 133, 0.4);
+        }
+        
+        .video-button:hover::before {
+            opacity: 1;
+        }
+        
+        .video-button:active {
+            transform: translateY(-5px) scale(1.02);
+        }
+        
+        .video-button i {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+        }
+        
+        .button-text {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        
+        .button-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            animation: pulse 2s infinite;
+            z-index: -2;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+            70% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+        }
+        
+        .video-container {
+            max-width: 900px;
+            margin: 40px auto 0;
+            background: var(--primary);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .video-container.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .close-video {
+            margin-top: 30px;
+            background: rgba(10, 10, 10, 0.9);
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .close-video:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px 0;
+            text-align: center;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 100px;
+            margin: 25px auto;
+        }
+        
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.05;
+            filter: blur(40px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 0 40px;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            }
+            
+            .title {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
+            
+            .letter-container {
+                padding: 40px 25px;
+                border-radius: 20px;
+            }
+            
+            .signature {
+                font-size: 1.8rem;
+            }
+            
+            .meta-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.3rem;
+            }
+            
+            .letter-body {
+                font-size: 1rem;
+            }
+            
+            .video-button {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .video-button i {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Shapes -->
+    <div class="bg-shapes">
+        <div class="shape shape-1" style="width: 300px; height: 300px; top: 10%; left: 5%;"></div>
+        <div class="shape shape-2" style="width: 200px; height: 200px; top: 60%; right: 10%; background: var(--gradient-accent);"></div>
+        <div class="shape shape-3" style="width: 150px; height: 150px; bottom: 20%; left: 15%;"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content animate-on-scroll">
+                <h1 class="title floating">Professional Update</h1>
+                <p class="subtitle">A message regarding organizational alignment and future directions at BrightChamps</p>
+                
+                <div class="meta-badges">
+                    <div class="badge">
+                        <i class="fas fa-building"></i>
+                        <span>BrightChamps</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>10 Months</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Arun N</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Letter Content -->
+    <div class="container">
+        <div class="letter-container animate-on-scroll">
+            <div class="letter-body">
+                <p class="greeting">Hello Team,</p>
+                
+                <p class="paragraph">I want to share an update so everyone has clear context.</p>
+                
+                <p class="paragraph">Over the past 10 months at <span class="highlight">BrightChamps</span>, there have been ongoing changes in leadership, team structures, workflows, processes, and incentive policies. I've genuinely tried to adapt to each change and make things work. At the same time, the lack of a consistent structure has made it difficult for me to operate with clarity and confidence over the long term.</p>
+                
+                <p class="paragraph">Along the way, a significant part of my day-to-day work has shifted away from core sales responsibilities, including handling enrolled parents, combined with frequent team and workflow changes. This has made it harder for me to do my best work in the role I was hired for.</p>
+                
+                <p class="paragraph">After reflecting on this carefully, I've realized that the current structure isn't a fit for how I do my best work.</p>
+                
+                <p class="paragraph">Considering the above, I believe that <span class="highlight">BrightChamps</span> may not be the right organizational fit for me at this stage, and it would be in the best interest of both parties to part ways respectfully.</p>
+                
+                <p class="paragraph">I'm not interested in continuing going forward. I request that all pending incentives and dues be processed fully and without deductions, as any discrepancies may lead to unnecessary friction, which I would prefer to avoid.</p>
+                
+                <p class="paragraph">I appreciate the opportunity to work with many of you and wish the team continued success ahead.</p>
+                
+                <div class="closing">
+                    <p>Regards,</p>
+                    <p class="signature">Arun N</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Video Section -->
+    <div class="video-section">
+        <div class="container">
+            <div class="button-container">
+                <button class="video-button" id="videoButton">
+                    <div class="button-pulse"></div>
+                    <i class="fas fa-play"></i>
+                    <span class="button-text">PRESS</span>
+                </button>
+            </div>
+            
+            <div class="video-container" id="videoContainer">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/id3UwSBieNM?si=gPUBuzWomx08zcJx&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            
+            <button class="close-video" id="closeVideo" style="display: none;">Close Video</button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>This communication is intended for the BrightChamps team.</p>
+                <p>Please handle with discretion and professionalism.</p>
+                <div class="footer-divider"></div>
+                <p>© 2023 Professional Update | Designed with clarity and respect</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const videoButton = document.getElementById('videoButton');
+            const closeVideoButton = document.getElementById('closeVideo');
+            const videoContainer = document.getElementById('videoContainer');
+            
+            // Background shapes animation
+            createBackgroundShapes();
+            
+            // Scroll animations
+            setupScrollAnimations();
+            
+            // Paragraph animations
+            animateParagraphs();
+            
+            // Video button functionality
+            videoButton.addEventListener('click', function() {
+                videoContainer.classList.add('show');
+                closeVideoButton.style.display = 'inline-block';
+                videoButton.style.display = 'none';
+                
+                // Smooth scroll to video
+                setTimeout(() => {
+                    videoContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+                
+                // Add a subtle shake animation to button
+                this.classList.add('animate__animated', 'animate__pulse');
+                setTimeout(() => {
+                    this.classList.remove('animate__animated', 'animate__pulse');
+                }, 1000);
+            });
+            
+            // Close video functionality
+            closeVideoButton.addEventListener('click', function() {
+                videoContainer.classList.remove('show');
+                this.style.display = 'none';
+                videoButton.style.display = 'flex';
+                
+                // Smooth scroll back to button
+                setTimeout(() => {
+                    videoButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+                
+                // Add animation to button reappearance
+                videoButton.classList.add('animate__animated', 'animate__bounceIn');
+                setTimeout(() => {
+                    videoButton.classList.remove('animate__animated', 'animate__bounceIn');
+                }, 1000);
+            });
+            
+            // Create dynamic background shapes
+            function createBackgroundShapes() {
+                const bgShapes = document.querySelector('.bg-shapes');
+                
+                // Add more shapes for a richer background
+                for (let i = 4; i <= 8; i++) {
+                    const shape = document.createElement('div');
+                    shape.className = 'shape';
+                    
+                    // Random position and size
+                    const size = Math.random() * 200 + 50;
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 100;
+                    
+                    // Random color
+                    const colors = [
+                        'var(--gradient)',
+                        'var(--gradient-accent)',
+                        'linear-gradient(135deg, #4361ee 0%, #4cc9f0 100%)'
+                    ];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    shape.style.width = `${size}px`;
+                    shape.style.height = `${size}px`;
+                    shape.style.left = `${left}%`;
+                    shape.style.top = `${top}%`;
+                    shape.style.background = color;
+                    shape.style.opacity = '0.03';
+                    shape.style.animation = `floating ${Math.random() * 10 + 10}s ease-in-out infinite alternate`;
+                    
+                    bgShapes.appendChild(shape);
+                }
+            }
+            
+            // Setup scroll animations
+            function setupScrollAnimations() {
+                const animateElements = document.querySelectorAll('.animate-on-scroll');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                animateElements.forEach(element => {
+                    observer.observe(element);
+                });
+            }
+            
+            // Animate paragraphs one by one
+            function animateParagraphs() {
+                const paragraphs = document.querySelectorAll('.paragraph');
+                
+                paragraphs.forEach((paragraph, index) => {
+                    // Set initial state
+                    paragraph.style.opacity = '0';
+                    paragraph.style.transform = 'translateY(20px)';
+                    paragraph.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                    
+                    // Add to observer
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                paragraph.style.opacity = '1';
+                                paragraph.style.transform = 'translateY(0)';
+                                paragraph.classList.add('visible');
+                            }
+                        });
+                    }, {
+                        threshold: 0.2
+                    });
+                    
+                    observer.observe(paragraph);
+                });
+            }
+            
+            // Add floating animation to header badges
+            const badges = document.querySelectorAll('.badge');
+            badges.forEach((badge, index) => {
+                badge.style.animationDelay = `${index * 0.2}s`;
+                badge.classList.add('animate__animated', 'animate__fadeInUp');
+            });
+            
+            // Add typewriter effect to title
+            const title = document.querySelector('.title');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            // Start typewriter after a short delay
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>
